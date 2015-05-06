@@ -1,0 +1,103 @@
+    @import 'bootstrap-sprockets';
+    @import 'bootstrap';
+
+
+body {
+  background: url("kid-friendly-wallpaper.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background: rgb(0, 0, 0) transparent;
+  opacity: 1.0;
+}
+
+.image-format {
+  width: 200px;
+  height: 200px;
+}
+
+.address-format {
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  border-spacing: 100px;
+}
+
+.column-1-format {
+  text-align: left;
+  font-size: 30px;
+}
+
+.nav-format {
+  margin-right: 140px;
+  float: right;
+  text-align: right;
+  font-size: 25px;
+}
+/*div.background
+  {
+  width:500px;
+  height:300px;
+  background:url(background.jpg) no-repeat;
+  border:2px solid white;
+  }*/
+div.xbox
+  {
+  width:400px;
+  height:180px;
+  margin:50px 500px;
+  background-color:#000000;
+  border:1px solid black;
+  opacity:0.7;
+  }
+
+div.xbox p
+  {
+  margin:30px 40px;
+  font-family:"Arial Black", Gadget, sans-serif;
+  font-size:15px;
+  font-weight:bolder;
+  color:#ffffff;
+  }
+
+.container{
+  width:945px;
+  height:475px;
+  padding:20px;
+  border:1px solid gray;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  background: black;
+  margin-bottom: 4px;
+}
+
+.image-slider-wrapper{
+  overflow: hidden;
+}
+
+#image_slider{
+  position: relative;
+  overflow: hidden;
+  height: 380px;
+  padding:0;
+  left:0;
+}
+
+.image_slider_format {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+  padding:0;
+  left:0;
+  margin-top: 22px;
+}
+
+#image_slider li{
+  position:relative;
+  max-width: 100%;
+  float:left;
+  list-style: none;
+  left: 0;
+}

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  get 'letters/letterb'
+
+  resources :letters
+
+  resources :welcome
 
   root 'welcome#index'
 

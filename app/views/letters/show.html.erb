@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First image:</strong>
+  <%= image_tag @letter.first_image %>
+</p>
+
+<p>
+<strong>Second image:</strong>
+  <% if @letter.first_image.present? %>
+    <%= image_tag(@letter.second_image) %>
+  <% end %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_letter_path(@letter) %> |
+<%= link_to 'Back', letters_path %>
