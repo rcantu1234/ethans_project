@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  get 'letters/letterb'
+  get '/letters/lettera'
+  get '/letters/letterb'
+  get '/letters/letterc'
+  get '/letters/letterd'
+  get '/letters/lettere'
 
   resources :letters
 

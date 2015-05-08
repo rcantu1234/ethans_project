@@ -1,5 +1,5 @@
 class LettersController < ApplicationController
-  before_action :set_letter, only: [:show, :edit, :update, :destroy, :letterb]
+  before_action :set_letter, only: [:show, :edit, :update, :destroy]
 
   # GET /letters
   # GET /letters.json
@@ -7,9 +7,19 @@ class LettersController < ApplicationController
     @letters = Letter.all
   end
 
+  def lettera
+  end
+
   def letterb
-    @letter = Letter.find(params[:id])
-    @letters = Letter.all
+  end
+
+  def letterc
+  end
+
+  def letterd
+  end
+
+  def lettere
   end
 
   # GET /letters/1
@@ -70,7 +80,7 @@ class LettersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_letter
-      @letter = Letter.find(params[:id])
+      @letter = Letter.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

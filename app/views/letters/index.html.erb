@@ -1,4 +1,221 @@
-<p id="notice"><%= notice %></p>
+<script type="text/javascript">
+
+var ul;
+var li_items;
+var li_number;
+var image_number = 0;
+var slider_width = 0;
+var image_width;
+var current = 0;
+
+function init(){
+  ul = document.getElementById('image_slider');
+  li_items = ul.children;
+  li_number = li_items.length;
+  for (i = 0; i < li_number; i++){
+    // nodeType == 1 means the node is an element.
+    // in this way it's a cross-browser way.
+    //if (li_items[i].nodeType == 1){
+      //clietWidth and width???
+      image_width = li_items[i].childNodes[0].clientWidth;
+      slider_width += image_width;
+      image_number++;
+  }
+
+  ul.style.width = parseInt(slider_width) + 'px';
+  slider(ul);
+}
+
+function slider(){
+    animate({
+      delay:17,
+      duration: 5000,
+      delta:function(p){return Math.max(0, -1 + 2 * p)},
+      step:function(delta){
+          ul.style.left = '-' + parseInt(current * image_width + delta * image_width) + 'px';
+        },
+      callback:function(){
+        current++;
+        if(current < li_number-1){
+          slider();
+        }
+        else{
+          var left = (li_number - 1) * image_width;
+          setTimeout(function(){goBack(left)},2000);
+          setTimeout(slider, 4000);
+        }
+      }
+    });
+}
+function goBack(left_limits){
+  current = 0;
+  setInterval(function(){
+    if(left_limits >= 0){
+      ul.style.left = '-' + parseInt(left_limits) + 'px';
+      left_limits -= image_width / 10;
+    }
+  }, 17);
+}
+function animate(opts){
+  var start = new Date;
+  var id = setInterval(function(){
+    var timePassed = new Date - start;
+    var progress = timePassed / opts.duration
+    if(progress > 1){
+      progress = 1;
+    }
+    var delta = opts.delta(progress);
+    opts.step(delta);
+    if (progress == 1){
+      clearInterval(id);
+      opts.callback();
+    }
+  }, opts.dalay || 17);
+}
+window.onload = init;
+</script>
+
+    <div class="container">
+      <div class="image-slider-wrapper image_slider_format">
+        <ul id="image_slider">
+          <li><a href="/letters/lettera"><img src="http://www.kidzone.ws/kindergarten/vowels/s/a.gif" width="300" height="380" /></a></li>
+          <li><a href="/letters/letterb"><img src="http://www.kidzone.ws/images-changed/kindergarten/b.gif" width="300" height="380" /></a></li>
+          <li><a href="/letters/letterc"><img src="http://www.kidzone.ws/images-changed/kindergarten/c.gif" width="300" height="380" /></a></li>
+          <li><a href="/letters/letterd"><img src="http://www.kidzone.ws/images-changed/kindergarten/d.gif" width="300" height="380" /></a></li>
+          <li><a href="/letters/lettere"><img src="http://www.kidzone.ws/kindergarten/vowels/s/e.gif" width="300" height="380" /></a></li>
+          <li><img src="https://dl.dropboxusercontent.com/u/65639888/image/1.jpg"></li>
+          <li><img src="https://dl.dropboxusercontent.com/u/65639888/image/1.jpg"></li>
+
+        </ul>
+        <div class="pager">
+        </div>
+      </div>
+    </div>
+
+<!--
+<br>
+<br>
+<br>
+<br>
+<br>
+<br> -->
+
+<div class="background">
+<div class="xbox">
+<p>This is an example of text placed within the transparent box so you can see the effect.  This is an example of text placed within the transparent box so you can see the effect. </p>
+</div>
+</div>
+
+<script type="text/javascript">
+  function Slider( element ) {
+  this.el = document.querySelector( element );
+  this.init();
+}
+
+Slider.prototype = {
+  init: function() {
+    this.links = this.el.querySelectorAll( "#slider-nav a" );
+    this.wrapper = this.el.querySelector( "#slider-wrapper" );
+    this.navigate();
+  },
+  navigate: function() {
+
+    for( var i = 0; i < this.links.length; ++i ) {
+      var link = this.links[i];
+      this.slide( link );
+    }
+  },
+
+  animate: function( slide ) {
+    var parent = slide.parentNode;
+    var caption = slide.querySelector( ".caption" );
+    var captions = parent.querySelectorAll( ".caption" );
+    for( var k = 0; k < captions.length; ++k ) {
+      var cap = captions[k];
+      if( cap !== caption ) {
+        cap.classList.remove( "visible" );
+      }
+    }
+    caption.classList.add( "visible" );
+  },
+
+  slide: function( element ) {
+    var self = this;
+    element.addEventListener( "click", function( e ) {
+      e.preventDefault();
+      var a = this;
+      self.setCurrentLink( a );
+      var index = parseInt( a.getAttribute( "data-slide" ), 10 ) + 1;
+      var currentSlide = self.el.querySelector( ".slide:nth-child(" + index + ")" );
+
+      self.wrapper.style.left = "-" + currentSlide.offsetLeft + "px";
+      self.animate( currentSlide );
+
+    }, false);
+  },
+  setCurrentLink: function( link ) {
+    var parent = link.parentNode;
+    var a = parent.querySelectorAll( "a" );
+
+    link.className = "current";
+
+    for( var j = 0; j < a.length; ++j ) {
+      var cur = a[j];
+      if( cur !== link ) {
+        cur.className = "";
+      }
+    }
+  }
+};
+
+document.addEventListener( "DOMContentLoaded", function() {
+  var aSlider = new Slider( "#slider" );
+
+});
+
+</script>
+
+<div id="slider">
+  <div id="slider-wrapper">
+    <div class="slide">
+      <img src="http://lorempixel.com/960/300/sports" alt="" />
+      <p class="caption">Caption 1</p>
+    </div>
+    <div class="slide">
+      <img src="http://lorempixel.com/960/300/business" alt="" />
+      <p class="caption">Caption 2</p>
+    </div>
+    <div class="slide">
+      <img src="http://lorempixel.com/960/300/animals" alt="" />
+      <p class="caption">Caption 3</p>
+    </div>
+    <div class="slide">
+      <img src="http://lorempixel.com/960/300/food" alt="" />
+      <p class="caption">Caption 4</p>
+    </div>
+    <div class="slide">
+      <img src="http://lorempixel.com/960/300/nature" alt="" />
+      <p class="caption">Caption 5</p>
+    </div>
+    <div class="slide">
+      <img src="http://www.kidzone.ws/kindergarten/vowels/s/e.gif" width="642" height="200" alt="" />
+      <p class="caption">Caption 6</p>
+    </div>
+  </div>
+
+  <div id="slider-nav">
+    <a href="#" data-slide="0">1</a>
+    <a href="#" data-slide="1">2</a>
+    <a href="#" data-slide="2">3</a>
+    <a href="#" data-slide="3">4</a>
+    <a href="#" data-slide="4">5</a>
+    <a href="#" data-slide="5">E</a>
+  </div>
+</div>
+
+
+
+<!-- <p id="notice"><%= notice %></p>
 
   <script "text/javascript">
 
@@ -64,3 +281,4 @@
 <!--  -->
 <!--
 <%= link_to 'New Letter', new_letter_path %> -->
+
