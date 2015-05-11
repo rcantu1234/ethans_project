@@ -64,13 +64,14 @@ div.xbox p
 .container{
   width:945px;
   height:475px;
-  padding:20px;
+  padding-top:35px;
   border:1px solid gray;
   -webkit-box-sizing:border-box;
   -moz-box-sizing:border-box;
   box-sizing:border-box;
   background: black;
   margin-bottom: 4px;
+  opacity: .8;
 }
 
 .image-slider-wrapper{
