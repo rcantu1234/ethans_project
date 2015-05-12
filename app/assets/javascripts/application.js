@@ -16,68 +16,152 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+  function Slider( element ) {
+  this.el = document.querySelector( element );
+  this.init();
+}
+
+Slider.prototype = {
+  init: function() {
+    this.links = this.el.querySelectorAll( "#slider-nav a" );
+    this.wrapper = this.el.querySelector( "#slider-wrapper" );
+    this.navigate();
+  },
+  navigate: function() {
+
+    for( var i = 0; i < this.links.length; ++i ) {
+      var link = this.links[i];
+      this.slide( link );
+    }
+  },
+
+  animate: function( slide ) {
+    var parent = slide.parentNode;
+    var caption = slide.querySelector( ".caption" );
+    var captions = parent.querySelectorAll( ".caption" );
+    for( var k = 0; k < captions.length; ++k ) {
+      var cap = captions[k];
+      if( cap !== caption ) {
+        cap.classList.remove( "visible" );
+      }
+    }
+    caption.classList.add( "visible" );
+  },
+
+  slide: function( element ) {
+    var self = this;
+    element.addEventListener( "click", function( e ) {
+      e.preventDefault();
+      var a = this;
+      self.setCurrentLink( a );
+      var index = parseInt( a.getAttribute( "data-slide" ), 10 ) + 1;
+      var currentSlide = self.el.querySelector( ".slide:nth-child(" + index + ")" );
+
+      self.wrapper.style.left = "-" + currentSlide.offsetLeft + "px";
+      self.animate( currentSlide );
+
+    }, false);
+  },
+  setCurrentLink: function( link ) {
+    var parent = link.parentNode;
+    var a = parent.querySelectorAll( "a" );
+
+    link.className = "current";
+
+    for( var j = 0; j < a.length; ++j ) {
+      var cur = a[j];
+      if( cur !== link ) {
+        cur.className = "";
+      }
+    }
+  }
+};
+
+document.addEventListener( "DOMContentLoaded", function() {
+  var aSlider = new Slider( "#slider" );
+
+});
+
+//1. set ul width
+//2. image when click prev/next button
+var ul;
+var li_items;
+var imageNumber;
+var imageWidth;
+var prev, next;
+var currentPostion = 0;
+var currentImage = 0;
 
 
-// <script "text/javascript">
-//     var Image = new Array('batteryterminals.jpg', 'batterywarning.gif', 'brakewarning1.jpg', 'brakewarning2.jpg', 'Letter-AThumb.jpg', 'StarfallABC.jpg');
-//     var Image_Number = 0;
-//     var Image_Length = Image.length - 1;
-//     var refreshIntervalId;
+function init(){
+  ul = document.getElementById('image_slider');
+  li_items = ul.children;
+  imageNumber = li_items.length;
+  imageWidth = li_items[0].children[0].clientWidth;
+  ul.style.width = parseInt(imageWidth * imageNumber) + 'px';
+  prev = document.getElementById("prev");
+  next = document.getElementById("next");
+  //.onclike = slide(-1) will be fired when onload;
+  /*
+  prev.onclick = function(){slide(-1);};
+  next.onclick = function(){slide(1);};*/
+  prev.onclick = function(){ onClickPrev();};
+  next.onclick = function(){ onClickNext();};
+}
 
-//     function change_image(num) {
-//       Image_Number = Image_Number + num;
+function animate(opts){
+  var start = new Date;
+  var id = setInterval(function(){
+    var timePassed = new Date - start;
+    var progress = timePassed / opts.duration;
+    if (progress > 1){
+      progress = 1;
+    }
+    var delta = opts.delta(progress);
+    opts.step(delta);
+    if (progress == 1){
+      clearInterval(id);
+      opts.callback();
+    }
+  }, opts.delay || 17);
+  //return id;
+}
 
-//         if (Image_Number > Image_Length) {
-//           Image_Number = 0;
-//         }
+function slideTo(imageToGo){
+  var direction;
+  var numOfImageToGo = Math.abs(imageToGo - currentImage);
+  // slide toward left
 
-//         if (Image_Number < 0) {
-//           Image_Number = Image_Length;
-//         }
-//         document.slideshow.src=Image[Image_Number];
+  direction = currentImage > imageToGo ? 1 : -1;
+  currentPostion = -1 * currentImage * imageWidth;
+  var opts = {
+    duration:1000,
+    delta:function(p){return p;},
+    step:function(delta){
+      ul.style.left = parseInt(currentPostion + direction * delta * imageWidth * numOfImageToGo) + 'px';
+    },
+    callback:function(){currentImage = imageToGo;}
+  };
+  animate(opts);
+}
 
-//         return false;
+function onClickPrev(){
+  if (currentImage == 0){
+    slideTo(imageNumber - 1);
+  }
+  else{
+    slideTo(currentImage - 1);
+  }
+}
 
-//      }
+function onClickNext(){
+  if (currentImage == imageNumber - 1){
+    slideTo(0);
+  }
+  else{
+    slideTo(currentImage + 1);
+  }
+}
 
-//     function auto() {
-//        refreshIntervalId = setInterval("change_image(1)", 2000);
-//     }
+window.onload = init;
 
-//     function stop() {
-//       clearInterval(refreshIntervalId);
-//     }
-
-//   </script>
-
-//     <div class='container'>
-//       <table class='address-format'>
-//         <tbody>
-//           <tr>
-//             <td class='column-1-format'>
-//               <img src='Gold Letter A.jpg' alt='Letter A' style="width:304px; height: 228px;"/>
-//             </td>
-//             <td>
-//               <img src="batteryterminals.jpg" alt='Battery Terminals' name="slideshow" style="width:304px; height:228px">
-//             </td>
-//           </tr>
-//         </tbody>
-//       </table>
-//     </div>
-// <!--
-
-// <div style="height:250px; width:550px; overflow-x:scroll ; overflow-y: scroll; padding-bottom:10px;">      </div>
-//  -->
-//     <div class='container'>
-//       <table class='nav-format'>
-//         <tbody>
-//             <tr>
-//             <td align="right"><a href="javascript.html" onclick="return change_image(-1)">Previous</a> | </td>
-//             <td align="right"><a href="javascript:change_image(1)">Next</a> | </td>
-//             <td align="right"><a href="javascript:auto()">Auto</a> | </td>
-//             <td align="right"><a href="javascript:stop()">Stop</a></td>
-//           </tr>
-//         </tbody>
-//       </table>
-//     </div>
-//     <hr>

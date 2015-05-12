@@ -22,6 +22,9 @@ class LettersController < ApplicationController
   def lettere
   end
 
+  def letterf
+  end
+
   # GET /letters/1
   # GET /letters/1.json
   def show

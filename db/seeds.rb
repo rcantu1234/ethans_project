@@ -50,3 +50,7 @@ letterD = Letter.create!({
 letterE = Letter.create!({
                 first_image: "letter_e.gif"
 })
+
+letterF = Letter.create!({
+                first_image: "letter_f.gif"
+})

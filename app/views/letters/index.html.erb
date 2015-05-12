@@ -1,3 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="Image-Slider-LnR.js"></script>
+    <link rel="stylesheet" type="text/css" href="Image-Slider-LnR.css">
+  </head>
+
+<!--      <div class="slide">
+      <a href="/letters/lettera"><img src="http://www.kidzone.ws/kindergarten/vowels/s/a.gif" width="450" height="300" alt="" /></a>
+      <p class="caption">LETTER A</p>
+    </div> -->
+
+  <body>
+    <div class="container">
+      <div class="slider_wrapper">
+        <ul id="image_slider">
+          <li><img src="http://www.kidzone.ws/kindergarten/vowels/s/a.gif" width="300" height="380" /></li>
+          <li><img src="http://www.kidzone.ws/images-changed/kindergarten/b.gif" width="300" height="380" /></li>
+          <li><img src="http://www.kidzone.ws/images-changed/kindergarten/c.gif" width="300" height="380" /></li>
+          <li><img src="http://www.kidzone.ws/images-changed/kindergarten/d.gif" width="300" height="380" /></li>
+          <li><img src="http://www.kidzone.ws/kindergarten/vowels/s/e.gif" width="300" height="380" /></li>
+          <li><a href="/letters/letterf" target="_blank"><img src="http://www.kidzone.ws/images-changed/kindergarten/f.gif" width="300" height="380" /></a></li>
+          <li><a href="/letters/letterg"><img src="http://www.kidzone.ws/images-changed/kindergarten/g.gif" width="300" height="380" /></a></li>
+
+
+        </ul>
+        <span class="nvgt" id="prev"></span>
+        <span class="nvgt" id="next"></span>
+      </div>
+    </div>
+
+<!--
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
 <script type="text/javascript">
 
 var ul;
@@ -78,149 +119,47 @@ window.onload = init;
     <div class="container">
       <div class="image-slider-wrapper image_slider_format">
         <ul id="image_slider">
-          <li><a href="/letters/lettera"><img src="http://www.kidzone.ws/kindergarten/vowels/s/a.gif" width="300" height="380" /></a></li>
-          <li><a href="/letters/letterb"><img src="http://www.kidzone.ws/images-changed/kindergarten/b.gif" width="300" height="380" /></a></li>
-          <li><a href="/letters/letterc"><img src="http://www.kidzone.ws/images-changed/kindergarten/c.gif" width="300" height="380" /></a></li>
-          <li><a href="/letters/letterd"><img src="http://www.kidzone.ws/images-changed/kindergarten/d.gif" width="300" height="380" /></a></li>
-          <li><a href="/letters/lettere"><img src="http://www.kidzone.ws/kindergarten/vowels/s/e.gif" width="300" height="380" /></a></li>
-          <li><img src="https://dl.dropboxusercontent.com/u/65639888/image/1.jpg"></li>
-          <li><img src="https://dl.dropboxusercontent.com/u/65639888/image/1.jpg"></li>
-
+          <li><img src="http://www.kidzone.ws/kindergarten/vowels/s/a.gif" width="300" height="380" /></li>
+          <li><img src="http://www.kidzone.ws/images-changed/kindergarten/b.gif" width="300" height="380" /></li>
+          <li><img src="http://www.kidzone.ws/images-changed/kindergarten/c.gif" width="300" height="380" /></li>
+          <li><img src="http://www.kidzone.ws/images-changed/kindergarten/d.gif" width="300" height="380" /></li>
+          <li><img src="http://www.kidzone.ws/kindergarten/vowels/s/e.gif" width="300" height="380" /></li>
         </ul>
-        <div class="pager">
-        </div>
+      <div class="pager">
+    </div>
       </div>
     </div>
 
-<div class="background">
+<!-- <div class="background">
 <div class="xbox">
 <p>This is an example of text placed within the transparent box so you can see the effect.  This is an example of text placed within the transparent box so you can see the effect. </p>
 </div>
-</div>
+</div> -->
 
-<script type="text/javascript">
-  function Slider( element ) {
-  this.el = document.querySelector( element );
-  this.init();
-}
 
-Slider.prototype = {
-  init: function() {
-    this.links = this.el.querySelectorAll( "#slider-nav a" );
-    this.wrapper = this.el.querySelector( "#slider-wrapper" );
-    this.navigate();
-  },
-  navigate: function() {
-
-    for( var i = 0; i < this.links.length; ++i ) {
-      var link = this.links[i];
-      this.slide( link );
-    }
-  },
-
-  animate: function( slide ) {
-    var parent = slide.parentNode;
-    var caption = slide.querySelector( ".caption" );
-    var captions = parent.querySelectorAll( ".caption" );
-    for( var k = 0; k < captions.length; ++k ) {
-      var cap = captions[k];
-      if( cap !== caption ) {
-        cap.classList.remove( "visible" );
-      }
-    }
-    caption.classList.add( "visible" );
-  },
-
-  slide: function( element ) {
-    var self = this;
-    element.addEventListener( "click", function( e ) {
-      e.preventDefault();
-      var a = this;
-      self.setCurrentLink( a );
-      var index = parseInt( a.getAttribute( "data-slide" ), 10 ) + 1;
-      var currentSlide = self.el.querySelector( ".slide:nth-child(" + index + ")" );
-
-      self.wrapper.style.left = "-" + currentSlide.offsetLeft + "px";
-      self.animate( currentSlide );
-
-    }, false);
-  },
-  setCurrentLink: function( link ) {
-    var parent = link.parentNode;
-    var a = parent.querySelectorAll( "a" );
-
-    link.className = "current";
-
-    for( var j = 0; j < a.length; ++j ) {
-      var cur = a[j];
-      if( cur !== link ) {
-        cur.className = "";
-      }
-    }
-  }
-};
-
-document.addEventListener( "DOMContentLoaded", function() {
-  var aSlider = new Slider( "#slider" );
-
-});
-
-</script>
 
 <div id="slider">
   <div id="slider-wrapper">
     <div class="slide">
-      <a href="/letters/lettera"><img src="http://www.kidzone.ws/kindergarten/vowels/s/a.gif" width="350" height="300" alt="" /></a>
+      <a href="/letters/lettera"><img src="http://www.kidzone.ws/kindergarten/vowels/s/a.gif" width="450" height="300" alt="" /></a>
       <p class="caption">LETTER A</p>
     </div>
     <div class="slide">
-      <a href="/letters/letterb"><img src="http://www.kidzone.ws/images-changed/kindergarten/b.gif" width="350" height="300" alt="" /></a>
+      <a href="/letters/letterb"><img src="http://www.kidzone.ws/images-changed/kindergarten/b.gif" width="450" height="300" alt="" /></a>
       <p class="caption">LETTER B</p>
     </div>
       <div class="slide">
-      <a href="/letters/letterc"><img src="http://www.kidzone.ws/images-changed/kindergarten/c.gif" width="350" height="300" alt="" /></a>
+      <a href="/letters/letterc"><img src="http://www.kidzone.ws/images-changed/kindergarten/c.gif" width="450" height="300" alt="" /></a>
       <p class="caption">LETTER C</p>
     </div>
       <div class="slide">
-      <a href="/letters/letterd"><img src="http://www.kidzone.ws/images-changed/kindergarten/d.gif" width="350" height="300" alt="" /></a>
+      <a href="/letters/letterd"><img src="http://www.kidzone.ws/images-changed/kindergarten/d.gif" width="450" height="300" alt="" /></a>
       <p class="caption">LETTER D</p>
     </div>
     <div class="slide">
-      <a href="/letters/lettere"><img src="http://www.kidzone.ws/kindergarten/vowels/s/e.gif" width="350" height="300" alt="" /></a>
+      <a href="/letters/lettere"><img src="http://www.kidzone.ws/kindergarten/vowels/s/e.gif" width="450" height="300" alt="" /></a>
       <p class="caption">LETTER E</p>
     </div>
-
-
-<!--
-            <li><a href="/letters/lettera"><img src="http://www.kidzone.ws/kindergarten/vowels/s/a.gif" width="300" height="380" /></a></li>
-          <li><a href="/letters/letterb"><img src="http://www.kidzone.ws/images-changed/kindergarten/b.gif" width="300" height="380" /></a></li>
-          <li><a href="/letters/letterc"><img src="http://www.kidzone.ws/images-changed/kindergarten/c.gif" width="300" height="380" /></a></li>
-          <li><a href="/letters/letterd"><img src="http://www.kidzone.ws/images-changed/kindergarten/d.gif" width="300" height="380" /></a></li>
-          <li><a href="/letters/lettere"><img src="http://www.kidzone.ws/kindergarten/vowels/s/e.gif" width="300" height="380" /></a></li> -->
-<!--     <div class="slide">
-      <a href="/letters/lettera/"><img src="http://lorempixel.com/960/300/sports" alt="Letter A" /></a>
-      <p class="caption">Caption 1</p>
-    </div>
-    <div class="slide">
-      <img src="http://lorempixel.com/960/300/business" alt="" />
-      <p class="caption">Caption 2</p>
-    </div>
-    <div class="slide">
-      <img src="http://lorempixel.com/960/300/animals" alt="" />
-      <p class="caption">Caption 3</p>
-    </div>
-    <div class="slide">
-      <img src="http://lorempixel.com/960/300/food" alt="" />
-      <p class="caption">Caption 4</p>
-    </div>
-    <div class="slide">
-      <img src="http://lorempixel.com/960/300/nature" alt="" />
-      <p class="caption">Caption 5</p>
-    </div>
-    <div class="slide">
-      <a href="/letters/lettere"><img src="http://www.kidzone.ws/kindergarten/vowels/s/e.gif" width="400" height="300" alt="" /></a>
-      <p class="caption">Caption 6</p>
-    </div> -->
   </div>
 
   <div id="slider-nav">
@@ -233,72 +172,6 @@ document.addEventListener( "DOMContentLoaded", function() {
   </div>
 </div>
 
-
-
-<!-- <p id="notice"><%= notice %></p>
-
-  <script "text/javascript">
-
-    var Image = new Array('batteryterminals.jpg', 'batterywarning.gif', 'brakewarning1.jpg', 'brakewarning2.jpg', 'Letter-AThumb.jpg', 'StarfallABC.jpg');
-    var Image_Number = 0;
-    var Image_Length = Image.length - 1;
-    var refreshIntervalId;
-
-    function change_image(num) {
-      Image_Number = Image_Number + num;
-
-        if (Image_Number > Image_Length) {
-          Image_Number = 0;
-        }
-
-        if (Image_Number < 0) {
-          Image_Number = Image_Length;
-        }
-        document.slideshow.src=Image[Image_Number];
-
-        return false;
-
-     }
-
-    function auto() {
-       refreshIntervalId = setInterval("change_image(1)", 2000);
-    }
-
-    function stop() {
-      clearInterval(refreshIntervalId);
-    }
-
-  </script>
-
-    <div class='container'>
-      <table class='address-format'>
-        <tbody>
-          <tr>
-            <td class='column-1-format'>
-              <img src='Gold Letter A.jpg' alt='Letter A' style="width:304px; height: 228px;"/>
-            </td>
-            <td>
-              <img src="batteryterminals.jpg" alt='Battery Terminals' name="slideshow" style="width:304px; height:228px">
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class='container'>
-      <table class='nav-format'>
-        <tbody>
-            <tr>
-            <td align="right"><a href="javascript.html" onclick="return         change_image(-1)">Previous</a> | </td>
-            <td align="right"><a href="javascript:change_image(1)">Next</a> | </td>
-            <td align="right"><a href="javascript:auto()">Auto</a> | </td>
-            <td align="right"><a href="javascript:stop()">Stop</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-<!--  -->
-<!--
-<%= link_to 'New Letter', new_letter_path %> -->
+</body>
+</html>
 
