@@ -8,6 +8,7 @@ class LettersController < ApplicationController
   end
 
   def lettera
+    @letters = Letter.all
   end
 
   def letterb
@@ -25,6 +26,8 @@ class LettersController < ApplicationController
   def letterf
   end
 
+  def letterg
+  end
   # GET /letters/1
   # GET /letters/1.json
   def show
@@ -83,7 +86,7 @@ class LettersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_letter
-      @letter = Letter.all
+      @letter = Letter.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

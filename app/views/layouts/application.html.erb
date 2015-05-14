@@ -8,17 +8,17 @@
   <meta charset="utf-8">
 
 </head>
-
 <body>
 
-<nav class="navbar navbar-inverse navigation">
+<nav class="navbar navbar-inverse navigation nav-format">
   <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/">Ethan's World of Learning</a>
-    </div>
+<!--     <div class="navbar-header">
+    </div> -->
     <div>
       <ul class="nav navbar-nav">
-        <li><%= link_to 'HOME', root_path %></li>
+        <li><a class="navbar-brand" href="/">Ethan's World of Learning</a>
+        </li>
+        <li class="active"><%= link_to 'HOME', root_path %></li>
         <li><%= link_to 'LETTERS', letters_path %></li>
       </ul>
     </div>
