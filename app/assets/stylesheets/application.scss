@@ -42,12 +42,17 @@ body {
 float:left;
 }
 
-// .nav-format a {
-// display:block;
-// text-align:center;
-// width:150px; /* fixed width */
-// text-decoration:none;
-// }
+.link-format {
+  text-align: center;
+  font-size: 50px;
+  color: red;
+}
+
+.link-format a {
+  color: blue;
+}
+
+
 /*div.background
   {
   width:500px;

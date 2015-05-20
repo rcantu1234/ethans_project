@@ -24,9 +24,32 @@ class LettersController < ApplicationController
   end
 
   def letterf
+    # @letters = Letter.all
   end
 
   def letterg
+  end
+
+  def letterh
+  end
+
+  def letteri
+    @letters = Letter.all
+  end
+
+  def letterj
+  end
+
+  def letterk
+  end
+
+  def letterl
+  end
+
+  def letterm
+  end
+
+  def lettern
   end
   # GET /letters/1
   # GET /letters/1.json

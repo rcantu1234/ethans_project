@@ -109,6 +109,22 @@ function init(){
   next.onclick = function(){ onClickNext();};
 }
 
+// function init(){
+//   ul = document.getElementById('image_slider');
+//   li_items = ul.children;
+//   imageNumber = li_items.length;
+//   imageWidth = li_items[0].children[0].clientWidth;
+//   ul.style.width = parseInt(imageWidth * imageNumber) + 'px';
+//   prev2 = document.getElementById("prev2");
+//   next2 = document.getElementById("next2");
+//   //.onclike = slide(-1) will be fired when onload;
+//   /*
+//   prev.onclick = function(){slide(-1);};
+//   next.onclick = function(){slide(1);};*/
+//   prev2.onclick = function(){ onClickPrev();};
+//   next2.onclick = function(){ onClickNext();};
+// }
+
 function animate(opts){
   var start = new Date;
   var id = setInterval(function(){
