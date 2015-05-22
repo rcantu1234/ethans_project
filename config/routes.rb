@@ -13,6 +13,22 @@ Rails.application.routes.draw do
   get '/letters/letterl'
   get '/letters/letterm'
   get '/letters/lettern'
+  get '/letters/lettero'
+  get '/letters/letterp'
+  get '/letters/letterq'
+  get '/letters/letterr'
+  get '/letters/letters'
+  get '/letters/lettert'
+  get '/letters/letteru'
+  get '/letters/letterv'
+  get '/letters/letterw'
+  get '/letters/letterx'
+  get '/letters/lettery'
+  get '/letters/letterz'
+  get '/letters/lettershn'
+  get '/letters/lettersou'
+  get '/letters/lettersvz'
+
 
   resources :letters
 

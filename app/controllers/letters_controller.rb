@@ -7,6 +7,18 @@ class LettersController < ApplicationController
     @letters = Letter.all
   end
 
+  def lettershn
+    #@letters = Letter.all
+  end
+
+  def lettersou
+    @letters = Letter.all
+  end
+
+  def lettersvz
+
+  end
+
   def lettera
     @letters = Letter.all
   end
@@ -51,6 +63,41 @@ class LettersController < ApplicationController
 
   def lettern
   end
+
+  def lettero
+  end
+
+  def letterp
+  end
+
+  def letterq
+  end
+
+  def letterr
+  end
+
+  def letters
+  end
+
+  def lettert
+  end
+
+  def letteru
+  end
+
+  def letterv
+  end
+
+  def letterw
+  end
+
+  def letterx
+  end
+
+  def letterz
+  end
+
+
   # GET /letters/1
   # GET /letters/1.json
   def show

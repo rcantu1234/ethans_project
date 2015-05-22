@@ -92,7 +92,6 @@ var prev, next;
 var currentPostion = 0;
 var currentImage = 0;
 
-
 function init(){
   ul = document.getElementById('image_slider');
   li_items = ul.children;
